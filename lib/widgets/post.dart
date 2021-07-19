@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_flutter/constants/common_size.dart';
+import 'package:instagram_clone_flutter/constants/screen_size.dart';
+import 'package:instagram_clone_flutter/widgets/comment.dart';
 import 'package:instagram_clone_flutter/widgets/my_progress_indicator.dart';
 import 'package:instagram_clone_flutter/widgets/rounded_avatar.dart';
 
@@ -13,7 +15,6 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
 
     // to cache image, use CacheNetworkImage
     // Otherwise download image everytime when we change the screen
@@ -33,36 +34,7 @@ class Post extends StatelessWidget {
     // 하나의 Text 안에 여러가지의 텍스트 스타일을 가지게 하기 위해 RichText 를 이용
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: common_gap, vertical: common_xxs_gap),
-      child: Row(
-        children: [
-          RoundedAvatar(index: index, size: 24),
-          SizedBox(width: common_xxs_gap,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget> [
-              RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Youngjun",
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
-                      ),
-                      TextSpan(text: "  "),
-                      TextSpan(
-                        text: "Hello",
-                        style: TextStyle(color: Colors.black87),
-                      ),
-                    ]
-                  )
-              ),
-              Text(
-                "timestamp",
-                style: TextStyle(color: Colors.grey[400], fontSize: 10,),
-              )
-            ],
-          ),
-        ],
-      ),
+      child: Comment(index: index, showImage: true, username: "YoungJun", text: "Hello", dateTime: DateTime.now(),),
     );
   }
 

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone_flutter/feed_screen.dart';
+import 'package:instagram_clone_flutter/screens/feed_screen.dart';
+import 'package:instagram_clone_flutter/screens/profile_screen.dart';
+
+import 'constants/screen_size.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -26,11 +29,13 @@ class _HomePageState extends State<HomePage> {
     Container(color: Colors.blueAccent),
     Container(color: Colors.greenAccent),
     Container(color: Colors.deepPurpleAccent),
-    Container(color: Colors.cyanAccent),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+
     return Scaffold(
       // 그냥 바로 widget list 를 넣으면 실행시마다 새로 만들어주는 것이기 때문에 비효율적이다.
       // 그래서 IndexedStack 을 사용하는 것
